@@ -6,14 +6,14 @@ import {
     Form,
     FormControl,
     Button,
-    NavDropdown,
 } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
         <Navbar bg="primary" variant="dark" expand="lg">
             <Container fluid>
-                <Navbar.Brand href="#">Mini Project</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">Mini Project</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
@@ -21,9 +21,9 @@ const Header = () => {
                         style={{ maxHeight: "100px" }}
                         navbarScroll
                     >
-                        <Nav.Link href="#action2">Dashboard Admin</Nav.Link>
-                        <Nav.Link href="#action1">Login</Nav.Link>
-                        <Nav.Link href="#action2">Register</Nav.Link>
+                        <Nav.Link as={Link} to="/dashboard-admin">Dashboard Admin</Nav.Link>
+                        <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                        <Nav.Link as={Link} to="/register">Register</Nav.Link>
                     </Nav>
                     <Form className="d-flex">
                         <FormControl
