@@ -32,7 +32,7 @@ const Home = () => {
                     <div className="d-flex flex-wrap">
                         {dataProducts.map((product) => (
                             <Link
-                                to="/detail-product"
+                                to={`/detail-product/${product.id}`}
                                 className="text-decoration-none"
                             >
                                 <CardComponent
