@@ -16,7 +16,7 @@ const Home = () => {
             .catch((error) => {
                 console.log(error);
             });
-        await setIsLoading(true);
+        await setIsLoading(false);
     };
 
     useEffect(() => {
