@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
 import { getAllProducts } from "../../services/api";
 import CardComponent from "../../components/card/card-component";
 import { Link } from "react-router-dom";
@@ -25,25 +24,28 @@ const Home = () => {
 
     return (
         <div>
+            <h1>Welcome to my Mini Project</h1>
             {isLoading ? (
-                <ReactLoading type="spinningBubbles" color="#0D6EFD" className="m-auto mt-5"/>
+                <ReactLoading
+                    type="spinningBubbles"
+                    color="#0D6EFD"
+                    className="m-auto mt-5"
+                />
             ) : (
-                <Container className="mt-5">
-                    <div className="d-flex flex-wrap">
-                        {dataProducts.map((product) => (
-                            <Link
-                                to={`/detail-product/${product.id}`}
-                                className="text-decoration-none"
-                            >
-                                <CardComponent
-                                    title={product.name}
-                                    price={product.price}
-                                    image={product.image}
-                                />
-                            </Link>
-                        ))}
-                    </div>
-                </Container>
+                <div className="d-flex flex-wrap">
+                    {dataProducts.map((product) => (
+                        <Link
+                            to={`/detail-product/${product.id}`}
+                            className="text-decoration-none"
+                        >
+                            <CardComponent
+                                title={product.name}
+                                price={product.price}
+                                image={product.image}
+                            />
+                        </Link>
+                    ))}
+                </div>
             )}
         </div>
     );

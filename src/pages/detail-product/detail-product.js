@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../../services/api";
 import ReactLoading from "react-loading";
@@ -31,17 +31,15 @@ const DetailProduct = () => {
                     className="m-auto mt-5"
                 />
             ) : (
-                <Container className="mt-5">
-                    <Row>
-                        <Col md="2">
-                            <FigureComponent dataProduct={dataProduct} />
-                        </Col>
-                        <Col md="10">
-                            <p>Price : {dataProduct.price}</p>
-                            <p>Quantity : {dataProduct.quantity}</p>
-                        </Col>
-                    </Row>
-                </Container>
+                <Row>
+                    <Col md="2">
+                        <FigureComponent dataProduct={dataProduct} />
+                    </Col>
+                    <Col md="10">
+                        <p>Price : {dataProduct.price}</p>
+                        <p>Quantity : {dataProduct.quantity}</p>
+                    </Col>
+                </Row>
             )}
         </div>
     );
