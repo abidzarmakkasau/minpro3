@@ -7,13 +7,20 @@ import {
     FormControl,
     Button,
 } from "react-bootstrap";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+    const isLogin = Cookies.get("token");
+    const navigate = useNavigate();
+
     return (
         <Navbar bg="primary" variant="dark" expand="lg">
             <Container fluid>
-                <Navbar.Brand as={Link} to="/">Mini Project</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">
+                    Mini Project
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
@@ -21,9 +28,28 @@ const Header = () => {
                         style={{ maxHeight: "100px" }}
                         navbarScroll
                     >
-                        <Nav.Link as={Link} to="/dashboard-admin">Dashboard Admin</Nav.Link>
-                        <Nav.Link as={Link} to="/login">Login</Nav.Link>
-                        <Nav.Link as={Link} to="/register">Register</Nav.Link>
+                        {isLogin ? (
+                            <>
+                                <Nav.Link as={Link} to="/dashboard-admin">
+                                    Dashboard Admin
+                                </Nav.Link>
+                                <Nav.Link as={Link} to="/register">
+                                    Register
+                                </Nav.Link>
+                                <Nav.Link
+                                    onClick={() => {
+                                        Cookies.remove("token");
+                                        navigate("/login");
+                                    }}
+                                >
+                                    Logout
+                                </Nav.Link>
+                            </>
+                        ) : (
+                            <Nav.Link as={Link} to="/login">
+                                Login
+                            </Nav.Link>
+                        )}
                     </Nav>
                     <Form className="d-flex">
                         <FormControl
