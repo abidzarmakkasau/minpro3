@@ -8,6 +8,7 @@ import DetailProduct from './pages/detail-product/detail-product'
 import DashboardAdmin from './pages/dashboard-admin/dashboard-admin';
 import Login from './pages/login/login';
 import Register from './pages/register/register';
+import ProtectedRoute from "./route/protected-route";
 
 function App() {
     return (
@@ -17,9 +18,11 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/detail-product/:id" element={<DetailProduct />} />
-                    <Route path="/dashboard-admin" element={<DashboardAdmin />} />
+                    <Route element={<ProtectedRoute />}>
+                        <Route path="/dashboard-admin" element={<DashboardAdmin />} />
+                        <Route path="/register" element={<Register />} />
+                    </Route>
                     <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
                 </Routes>
             </Container>
         </div>
