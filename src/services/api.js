@@ -43,12 +43,12 @@ export const deleteProduct = (id) => {
     return axios.delete(`${BASE_URL}/products/${id}`, headerConfig);
 };
 
-export const addProduct = (name, quantity, price, imageUrl) => {
+export const addProduct = (name, quantity, price, image) => {
     const bodyJSON = {
         name,
         quantity,
         price,
-        imageUrl,
+        image,
     };
 
     const token = Cookies.get("token");
@@ -60,4 +60,23 @@ export const addProduct = (name, quantity, price, imageUrl) => {
     };
 
     return axios.post(`${BASE_URL}/products`, bodyJSON, headerConfig);
+};
+
+export const updateProduct = (id, name, quantity, price, image) => {
+    const bodyJSON = {
+        name,
+        quantity,
+        price,
+        image,
+    };
+
+    const token = Cookies.get("token");
+
+    const headerConfig = {
+        headers: {
+            Authorization: "Bearer " + token,
+        },
+    };
+
+    return axios.put(`${BASE_URL}/products/${id}`, bodyJSON, headerConfig);
 };

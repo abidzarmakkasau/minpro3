@@ -1,30 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
-import { addProduct } from "../../services/api";
+import { updateProduct } from "../../services/api";
 
-const AddProductModal = (props) => {
-    const { show, handleClose, setRefresh, refresh } = props;
+const EditProductModal = (props) => {
+    const { showEdit, handleCloseEdit, setRefresh, refresh, dataEditProduct } =
+        props;
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
     const [quantity, setQuantity] = useState("");
     const [imageUrl, setImageUrl] = useState("");
 
-    const addNewProduct = async (e) => {    
-        e.preventDefault();    
-        await addProduct(name, quantity, price, imageUrl)
+    const editProduct = async (e) => {
+        e.preventDefault();
+        await updateProduct(dataEditProduct.id, name, quantity, price, imageUrl)
             .then((response) => console.log(response))
             .catch((error) => console.log(error));
-        handleClose();
+        handleCloseEdit();
         setRefresh(!refresh);
     };
 
+    useEffect(() => {
+        setName(dataEditProduct.name);
+        setPrice(dataEditProduct.price);
+        setQuantity(dataEditProduct.quantity);
+        setImageUrl(dataEditProduct.image);
+    }, [dataEditProduct.id]);
+
     return (
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={showEdit} onHide={handleCloseEdit}>
             <Modal.Header closeButton>
-                <Modal.Title>Add Product</Modal.Title>
+                <Modal.Title>Edit Product</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form onSubmit={addNewProduct}>
+                <Form onSubmit={editProduct}>
                     <Form.Group
                         className="mb-3"
                         controlId="exampleForm.ControlInput1"
@@ -85,7 +93,7 @@ const AddProductModal = (props) => {
                         />
                     </Form.Group>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
+                        <Button variant="secondary" onClick={handleCloseEdit}>
                             Close
                         </Button>
                         <Button variant="primary" type="submit">
@@ -98,4 +106,4 @@ const AddProductModal = (props) => {
     );
 };
 
-export default AddProductModal;
+export default EditProductModal;

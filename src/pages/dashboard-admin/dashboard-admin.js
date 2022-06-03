@@ -4,13 +4,16 @@ import { Table, Button } from "react-bootstrap";
 import { getAllProducts, deleteProduct } from "../../services/api";
 import ReactLoading from "react-loading";
 import swal from "sweetalert";
-import AddModalProduct from "../../components/modal/add-product-modal";
+import AddProductModal from "../../components/modal/add-product-modal";
+import EditProductModal from "../../components/modal/edit-product-modal";
 
 const DashboardAdmin = () => {
     const [dataProducts, setDataProducts] = useState([]);
+    const [dataEditProduct, setDataEditProduct] = useState({})
     const [isLoading, setIsLoading] = useState(false);
     const [refresh, setRefresh] = useState(false);
     const [show, setShow] = useState(false);
+    const [showEdit, setShowEdit] = useState(false)
 
     const fetchAllProducts = async () => {
         await setIsLoading(true);
@@ -44,13 +47,23 @@ const DashboardAdmin = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const handleCloseEdit = () => setShowEdit(false);
+    const handleShowEdit = () => setShowEdit(true);
+
     return (
         <div>
-            <AddModalProduct
+            <AddProductModal
                 show={show}
                 handleClose={handleClose}
                 setRefresh={setRefresh}
                 refresh={refresh}
+            />
+            <EditProductModal
+                showEdit={showEdit}
+                handleCloseEdit={handleCloseEdit}
+                setRefresh={setRefresh}
+                refresh={refresh}
+                dataEditProduct={dataEditProduct}
             />
             <h1>Dashboard Admin</h1>
             <div className="d-flex justify-content-end">
@@ -81,7 +94,14 @@ const DashboardAdmin = () => {
                                 <td>{product.quantity}</td>
                                 <td>{product.price}</td>
                                 <td>
-                                    <Button variant="warning" className="mx-1">
+                                    <Button
+                                        variant="warning"
+                                        className="mx-1"
+                                        onClick={() => {
+                                            handleShowEdit()
+                                            setDataEditProduct(product)
+                                        }}
+                                    >
                                         Edit
                                     </Button>
                                     <Button
