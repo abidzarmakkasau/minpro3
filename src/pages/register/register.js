@@ -25,6 +25,7 @@ const Register = () => {
                         type="text"
                         placeholder="Enter name"
                         onChange={(e) => setName(e.target.value)}
+                        required={true}
                     />
                 </Form.Group>
 
@@ -34,6 +35,7 @@ const Register = () => {
                         type="text"
                         placeholder="Enter address"
                         onChange={(e) => setAddress(e.target.value)}
+                        required={true}
                     />
                 </Form.Group>
 
@@ -43,6 +45,7 @@ const Register = () => {
                         type="text"
                         placeholder="Enter phone number"
                         onChange={(e) => setPhoneNumber(e.target.value)}
+                        required={true}
                     />
                 </Form.Group>
 
@@ -52,6 +55,7 @@ const Register = () => {
                         type="password"
                         placeholder="Password"
                         onChange={(e) => setPassword(e.target.value)}
+                        required={true}
                     />
                 </Form.Group>
                 <Button variant="primary" type="submit">

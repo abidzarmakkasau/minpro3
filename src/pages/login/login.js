@@ -31,6 +31,7 @@ const Login = () => {
                         placeholder="Enter name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        required={true}
                     />
                 </Form.Group>
 
@@ -41,6 +42,7 @@ const Login = () => {
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        required={true}
                     />
                 </Form.Group>
                 <Button variant="primary" type="submit">
