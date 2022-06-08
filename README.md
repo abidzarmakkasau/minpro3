@@ -1,6 +1,37 @@
 # Getting Started with Create React App
 
+Backend Using JWS
+
+# Getting Started with Create React App
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Frontend Library
+```
+@testing-library/jest-dom
+@testing-library/react
+@testing-library/user-event
+axios
+bootstrap
+js-cookie
+node-sass
+react
+react-bootstrap
+react-dom
+react-loading
+react-router-dom"
+react-scripts
+sweetalert
+web-vitals
+```
+
+## Backend Library
+```
+body-parser
+cors
+json-server
+jsonwebtoken
+```
 
 ## Available Scripts
 

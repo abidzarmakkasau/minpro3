@@ -7,6 +7,7 @@ import {
     FormControl,
     Button,
 } from "react-bootstrap";
+import Logo from "../../assets/images/phoenix.png";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +20,13 @@ const Header = () => {
         <Navbar bg="primary" variant="dark" expand="lg">
             <Container fluid>
                 <Navbar.Brand as={Link} to="/">
-                    Mini Project
+                    <img
+                        src={Logo}
+                        width="50"
+                        height="50"
+                        className="d-inline-block align-top"
+                        alt="React Bootstrap logo"
+                    />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
