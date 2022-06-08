@@ -1,6 +1,4 @@
-# Getting Started with Create React App
-
-Backend Using JWS
+# Backend Using json-server-jwt
 
 # Getting Started with Create React App
 
